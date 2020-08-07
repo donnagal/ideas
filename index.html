@@ -48,7 +48,7 @@
       border-right: 0!important;
       border-bottom: 7px solid #4a5568 !important;
       border-left: 0!important;
-      margin: 5px 0  94px 0!important;
+      margin: 5px 0  24px 0!important;
       padding: 17px 21px !important;
     }
     .cognito textarea:focus {
@@ -64,7 +64,7 @@
       background: #cbd5e0;
       margin: -10px !important;
       text-align: center;
-      color: #4a5568;
+      color: white;
       padding: 50px;
       width: 286px;
       height: 265px;
@@ -72,87 +72,108 @@
       display: block;
     }
     [data-field="WhatDoesYourIdeaRelateTo"] [type="radio"]:checked + span{
-      outline: solid #0F8045;
+      outline: solid black;
     }
     /* 1 */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(1) span {
+      background: #75abb7;
+    }
+
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(1) span::before  {
       font-family: "Font Awesome 5 Pro";
       content: "\f4c4";
       font-weight: 900;
       font-size: 44px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
+      text-indent: 8px;
     }
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(1) span::after  {
       content: '(i.e.) Improving collaborate across other departments.';
       font-size: 13px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
     }
     /* 2 */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(2) span {
+      background: #ADCA44;
+    }
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(2) span::before  {
       font-family: "Font Awesome 5 Pro";
       content: "\f5dc";
       font-weight: 900;
       font-size: 44px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
+      text-indent: 8px;
     }
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(2) span::after  {
       content: '(i.e.) Improving upskilling, learning, development and/or career opportunity.';
       font-size: 13px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
     }
     /* 3 */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(3) span {
+      background: #6B6B6A;
+    }
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(3) span::before  {
       font-family: "Font Awesome 5 Pro";
       content: "\f5b8";
       font-weight: 900;
       font-size: 44px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
+      text-indent: 8px;
     }
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(3) span::after  {
       content: '(i.e.) Improving motivation. Help workloads divided fairly among people. Help feeling overstress.';
       font-size: 13px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
     }
     /* 4 */
+      [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(4) span {
+        background: #EEC029;
+      }
       [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(4) span::before  {
       font-family: "Font Awesome 5 Pro";
       content: "\f96f";
       font-weight: 900;
       font-size: 44px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
+      text-indent: 8px;
     }
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(4) span::after  {
       content: '(i.e.) Improving process and support in getting stuff done.';
       font-size: 13px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
     }
     /* 5 */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(5) span {
+        background: #E0862F;
+      }
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(5) span::before  {
       font-family: "Font Awesome 5 Pro";
       content: "\f075";
       font-weight: 900;
       font-size: 44px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
+      text-indent: 8px;
     }
     [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(5) span::after  {
       content: '(i.e.) Improve regular conversion and sharing information.';
       font-size: 13px;
       display: block;
-      padding: 20px 0
+      padding: 20px 0;
     }
 
     /* Remain anonymous */
     [data-field="RemainAnonymous2"] {
-      margin-top: 75px !important;
+      margin-top: 25px !important;
       margin-bottom: 24px !important;
     }
     [data-field="RemainAnonymous2"] .c-choice-option span {
@@ -161,15 +182,27 @@
       font-weight: bold;
       color: white;
       min-width: 435px;
-      padding: 70px 20px;
+      padding: 40px 20px;
       display: block;
       text-align: center;
       margin-left: -22px;
     }
     [data-field="RemainAnonymous2"] [type="radio"]:checked + span{
-      outline: solid #0F8045;
+      outline: solid black;
     }
+    label[for="c-4-4"] span::after {content: ' 🗣';}
+    label[for="c-4-5"] span::after {content: ' 🙈';}
 
+    /* smaller screen */
+    @media only screen and (max-width: 1200px) { 
+    label[for="c-0-15"] span,
+    label[for="c-0-16"] span,
+    [data-field="RemainAnonymous2"] .c-choice-option span {
+      min-width: 100%;
+      display: block;
+      padding: 50px;
+    }
+  }
   </style>
 
 </head>
