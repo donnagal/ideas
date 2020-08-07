@@ -14,11 +14,42 @@
 
   <style>
     .c-forms-form { background-color: transparent !important;}
+
+    .cognito .c-forms-confirmation-message img { margin: auto; width: 300px; }
+
+    /* idea or question button */
+    label[for="c-0-15"] span,
+    label[for="c-0-16"] span {
+      background: #a4abb7;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      min-width: 435px;
+      padding: 70px 20px;
+      display: block;
+      text-align: center;
+      margin-left: -22px;
+      margin-bottom: 44px;
+    }
+    label[for="c-0-15"] [type="radio"]:checked + span,
+    label[for="c-0-16"] [type="radio"]:checked + span {
+      background: #0F8045;
+      outline: solid #333;
+    }
+    input[type=radio] {opacity: 0;}
+    
+    label[for="c-0-15"] span::after {content: '💡';}
+    label[for="c-0-16"] span::after {content: '🙋';}
+
+    /* text area  */
     .cognito textarea {
+      background: #edf2f7;
       border-top: 0!important;
       border-right: 0!important;
       border-bottom: 7px solid #4a5568 !important;
       border-left: 0!important;
+      margin: 5px 0  94px 0!important;
+      padding: 17px 21px !important;
     }
     .cognito textarea:focus {
       border-top: 0!important;
@@ -27,7 +58,118 @@
       border-left: 0!important;
       outline: none;
     }
-    .cognito .c-forms-confirmation-message img { margin: auto; width: 300px; }
+
+    /* goals */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option span {
+      background: #cbd5e0;
+      margin: -10px !important;
+      text-align: center;
+      color: #4a5568;
+      padding: 50px;
+      width: 286px;
+      height: 265px;
+      text-indent: -20px;
+      display: block;
+    }
+    [data-field="WhatDoesYourIdeaRelateTo"] [type="radio"]:checked + span{
+      outline: solid #0F8045;
+    }
+    /* 1 */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(1) span::before  {
+      font-family: "Font Awesome 5 Pro";
+      content: "\f4c4";
+      font-weight: 900;
+      font-size: 44px;
+      display: block;
+      padding: 20px 0
+    }
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(1) span::after  {
+      content: '(i.e.) Improving collaborate across other departments.';
+      font-size: 13px;
+      display: block;
+      padding: 20px 0
+    }
+    /* 2 */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(2) span::before  {
+      font-family: "Font Awesome 5 Pro";
+      content: "\f5dc";
+      font-weight: 900;
+      font-size: 44px;
+      display: block;
+      padding: 20px 0
+    }
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(2) span::after  {
+      content: '(i.e.) Improving upskilling, learning, development and/or career opportunity.';
+      font-size: 13px;
+      display: block;
+      padding: 20px 0
+    }
+    /* 3 */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(3) span::before  {
+      font-family: "Font Awesome 5 Pro";
+      content: "\f5b8";
+      font-weight: 900;
+      font-size: 44px;
+      display: block;
+      padding: 20px 0
+    }
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(3) span::after  {
+      content: '(i.e.) Improving motivation. Help workloads divided fairly among people. Help feeling overstress.';
+      font-size: 13px;
+      display: block;
+      padding: 20px 0
+    }
+    /* 4 */
+      [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(4) span::before  {
+      font-family: "Font Awesome 5 Pro";
+      content: "\f96f";
+      font-weight: 900;
+      font-size: 44px;
+      display: block;
+      padding: 20px 0
+    }
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(4) span::after  {
+      content: '(i.e.) Improving process and support in getting stuff done.';
+      font-size: 13px;
+      display: block;
+      padding: 20px 0
+    }
+    /* 5 */
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(5) span::before  {
+      font-family: "Font Awesome 5 Pro";
+      content: "\f075";
+      font-weight: 900;
+      font-size: 44px;
+      display: block;
+      padding: 20px 0
+    }
+    [data-field="WhatDoesYourIdeaRelateTo"] .c-choice-option:nth-child(5) span::after  {
+      content: '(i.e.) Improve regular conversion and sharing information.';
+      font-size: 13px;
+      display: block;
+      padding: 20px 0
+    }
+
+    /* Remain anonymous */
+    [data-field="RemainAnonymous2"] {
+      margin-top: 75px !important;
+      margin-bottom: 24px !important;
+    }
+    [data-field="RemainAnonymous2"] .c-choice-option span {
+      background: #a4abb7;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      min-width: 435px;
+      padding: 70px 20px;
+      display: block;
+      text-align: center;
+      margin-left: -22px;
+    }
+    [data-field="RemainAnonymous2"] [type="radio"]:checked + span{
+      outline: solid #0F8045;
+    }
+
   </style>
 
 </head>
@@ -42,72 +184,10 @@
     </div>
   </header>
 
-  <section class="bg-gray-200" data-aos="fade-up" data-aos-duration="1000">
-    <div class="container mx-auto py-24 text-gray-700 text-center">
-    
-      <div class="p-5">
-        <h3 class="mark-bold text-4xl">Goals</h3>
-      </div>
-    
-    <div class="px-2 mb-2">
-      <div class="flex flex-wrap -mx-2">
-    
-        <div class="w-1/3 lg:w-1/5 px-2 mb-4">
-          <div class="bg-gray-400 min-h-full px-5 py-10">
-            <p class="mark-bold text-4xl uppercase"><i class="fas fa-hands-helping"></i></p>
-            <h4 class="mark-bold text-xl pb-2">1.	Collaboration</h4>
-            <p class="text-xs pt-3">(i.e.) Improving collaborate across other departments.</p>
-          </div>
-        </div>
-    
-        <div class="w-1/3 lg:w-1/5 px-2 mb-4">
-          <div class="bg-gray-400 min-h-full px-5 py-10">
-            <p class="mark-bold text-4xl uppercase"><i class="fas fa-brain"></i></p>
-            <h4 class="mark-bold text-xl pb-2">2.	Role Development</h4>
-            <p class="text-xs pt-3">(i.e.) Improving upskilling, learning, development and/or career opportunity.</p>
-          </div>
-        </div>
-    
-        <div class="w-1/3 lg:w-1/5 px-2 mb-4">
-          <div class="bg-gray-400 min-h-full px-5 py-10">
-            <p class="mark-bold text-4xl uppercase"><i class="far fa-smile-beam"></i></p>
-            <h4 class="mark-bold text-xl pb-2">3.	Culture</h4>
-            <p class="text-xs pt-3">(i.e.) Improving motivation. Help workloads divided fairly among people. Help feeling overstress.</p>
-          </div>
-        </div>
-    
-        <div class="w-1/3 lg:w-1/5 px-2 mb-4">
-          <div class="bg-gray-400 min-h-full px-5 py-10">
-            <p class="mark-bold text-4xl uppercase"><i class="fas fa-stopwatch-20"></i></p>
-            <h4 class="mark-bold text-xl pb-2">4.	Efficiency</h4>
-            <p class="text-xs pt-3">(i.e.) Improving process and support in getting stuff done.</p>
-          </div>
-        </div>
-    
-        <div class="w-1/3 lg:w-1/5 px-2 mb-4">
-          <div class="bg-gray-400 min-h-full px-5 py-10">
-            <p class="mark-bold text-4xl uppercase"><i class="far fa-comment"></i></p>
-            <h4 class="mark-bold text-xl pb-2">5.	Communications</h4>
-            <p class="text-xs pt-3">(i.e.) Improve regular conversion and sharing information.</p>
-          </div>
-        </div>
-    
-    
-      </div>
-    </div>
-    
-    </div>
-  </section>
-
-
 
 <section data-aos="fade-up" data-aos-duration="1000">
   <div class="py-24">
     <div class="container mx-auto text-gray-700">
-
-      <div class="p-5 text-center">
-        <h3 class="mark-bold text-4xl">Submit idea</h3>
-      </div>
 
       <div class="flex flex-wrap -mx-2">
           <div class="w-full px-5">
