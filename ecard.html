@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Community ideas</title>
+
+  <link href="img/favicon.png" rel="icon" type="image/x-icon" style="line-height:inherit;" />
+    
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://template-2020.netlify.app/vendor/tailwindcss/css/tailwind.min.css" rel="stylesheet" type="text/css">
+  <link rel='stylesheet' href='https://kit-pro.fontawesome.com/releases/v5.13.1/css/pro.min.css'>
+
+  <style>
+    .bg-blue { background: #0033a0;}
+    .bg-blue-light { background: #2652ae;}
+    .text-blue-light { color: #2652ae;}
+
+    .c-forms-form { background-color: transparent !important;}
+
+    .cognito .c-forms-confirmation-message img { margin: auto; width: 300px; }
+
+    /* idea or question button */
+    label[for="c-0-15"] span,
+    label[for="c-0-16"] span {
+      background: #a4abb7;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      min-width: 435px;
+      padding: 70px 20px;
+      display: block;
+      text-align: center;
+      margin-left: -22px;
+      margin-bottom: 44px;
+    }
+    label[for="c-0-15"] [type="radio"]:checked + span,
+    label[for="c-0-16"] [type="radio"]:checked + span {
+      background: #0F8045;
+      outline: solid #333;
+    }
+    input[type=radio] {opacity: 0;}
+    
+    /* text area  */
+    .cognito textarea {
+      background: #edf2f7;
+      border-top: 0!important;
+      border-right: 0!important;
+      border-bottom: 7px solid #4a5568 !important;
+      border-left: 0!important;
+      margin: 5px 0  24px 0!important;
+      padding: 17px 21px !important;
+    }
+    .cognito textarea:focus {
+      border-top: 0!important;
+      border-right: 0!important;
+      border-bottom: 7px solid black !important;
+      border-left: 0!important;
+      outline: none;
+    }
+
+   
+    .c-field.c-col-1.c-sml-col-1.c-span-14.c-sml-span-12 {
+    box-shadow: 0px 0px 3px 0px #888888;
+   }
+
+    /* smaller screen */
+    @media only screen and (max-width: 1200px) { 
+    label[for="c-0-15"] span,
+    label[for="c-0-16"] span,
+    [data-field="RemainAnonymous2"] .c-choice-option span {
+      min-width: 100%;
+      display: block;
+      padding: 50px;
+    }
+  }
+  </style>
+
+</head>
+
+<body>
+
+  <header class="bg-black">
+    <div class="container mx-auto text-white">
+      <div class="p-5">
+        <h3 class="mark-bold text-4xl"><i class="far fa-envelope-open"></i> Cbus eCard</h3>
+      </div>
+    </div>
+  </header>
+
+
+<section data-aos="fade-up" data-aos-duration="1000">
+  <div class="py-24">
+    <div class="container mx-auto text-gray-700">
+
+      <div class="flex flex-wrap -mx-2">
+          <div class="w-full px-5">
+            <div class="cognito">
+              <script src="https://www.cognitoforms.com/s/bYLvPE4iR0WAeyPIFxi5eQ"></script>
+              <script>Cognito.load("forms", { id: "2" });</script>
+              </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+  <!-- Custom scripts for this template -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init(),$(".button-m").click(function(){$(".menu").slideToggle("hidden")});
+</script>
+
+</body>
+
+</html>
