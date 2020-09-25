@@ -1,122 +1,161 @@
 
-<!DOCTYPE html>
-<html lang="en" >
-
+<!-- TUT: https://www.emailonacid.com/blog/article/email-development/tutorial-how-to-code-an-interactive-greeting-card-email -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <title>Community ideas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!--[if !mso]><!-->
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
 
-  <link href="img/favicon.png" rel="icon" type="image/x-icon" style="line-height:inherit;" />
-    
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://template-2020.netlify.app/vendor/tailwindcss/css/tailwind.min.css" rel="stylesheet" type="text/css">
-  <link rel='stylesheet' href='https://kit-pro.fontawesome.com/releases/v5.13.1/css/pro.min.css'>
-
-  <style>
-    .bg-blue { background: #0033a0;}
-    .bg-blue-light { background: #2652ae;}
-    .text-blue-light { color: #2652ae;}
-
-    .c-forms-form { background-color: transparent !important;}
-
-    .cognito .c-forms-confirmation-message img { margin: auto; width: 300px; }
-
-    /* idea or question button */
-    label[for="c-0-15"] span,
-    label[for="c-0-16"] span {
-      background: #a4abb7;
-      font-size: 22px;
-      font-weight: bold;
-      color: white;
-      min-width: 435px;
-      padding: 70px 20px;
-      display: block;
-      text-align: center;
-      margin-left: -22px;
-      margin-bottom: 44px;
+  <style type="text/css">
+  @media (max-width: 3780px) {
+    .card_holder {
+      height:567px;
     }
-    label[for="c-0-15"] [type="radio"]:checked + span,
-    label[for="c-0-16"] [type="radio"]:checked + span {
-      background: #0F8045;
-      outline: solid #333;
+    .card_container {
+      height:567px;
     }
-    input[type=radio] {opacity: 0;}
-    
-    /* text area  */
-    .cognito textarea {
-      background: #edf2f7;
-      border-top: 0!important;
-      border-right: 0!important;
-      border-bottom: 7px solid #4a5568 !important;
-      border-left: 0!important;
-      margin: 5px 0  24px 0!important;
-      padding: 17px 21px !important;
+    /* entire container, keeps perspective */
+    .flip-container {
+      -webkit-perspective: 1000px;
+      perspective: 1000px;
+      z-index: 10;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 0px;
     }
-    .cognito textarea:focus {
-      border-top: 0!important;
-      border-right: 0!important;
-      border-bottom: 7px solid black !important;
-      border-left: 0!important;
-      outline: none;
+    /* flip the pane when hovered */
+    .flip-container:hover .flipper {
+      transform: rotateY(-180deg);
+      -webkit-transform: rotateY(-180deg);
+      -ms-transform: rotateY(-180deg);
     }
 
-   
-    .c-field.c-col-1.c-sml-col-1.c-span-14.c-sml-span-12 {
-    box-shadow: 0px 0px 3px 0px #888888;
-   }
+    /* flip speed goes here */
+    .flipper, .inside {
+      transition: 2s;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      position: relative;
+    }
 
-    /* smaller screen */
-    @media only screen and (max-width: 1200px) { 
-    label[for="c-0-15"] span,
-    label[for="c-0-16"] span,
-    [data-field="RemainAnonymous2"] .c-choice-option span {
-      min-width: 100%;
-      display: block;
-      padding: 50px;
+    /* hide back of pane during swap */
+    .front, .back {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* front pane, placed above back */
+    .front {
+      z-index: 10;
+      width:500px;
+      height:567px;
+      padding:0px;
+      /* for firefox 31 */
+      transform: rotateX(0deg);
+    }
+
+    /* back, initially hidden pane */
+    .back {
+      z-index: 5;
+      width:500px;
+      height:567px;
+      padding:0px;
+      transform: rotateX(180deg);
+      -webkit-transform: rotateX(180deg);
+    }
+
+    .inside {
+      z-index: -1;
+      width:500px;
+      height:567px;
+      padding:0px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      /* for firefox 31 */
+    }
+
+    .kinetic {
+      display:block !important;
+      max-height:none !important;
+      height:567px !important;
+      width:0px !important;
+      overflow:visible !important;
+    }
+    .fallback {
+      display:none !important;
     }
   }
+
+  .c-forms-form {
+    text-align: left;
+  }
+  .c-forms-form {
+    padding: 23px !important;
+  }
+  .cognito textarea, .c-forms-form input[type=text] {
+    margin: 5px 0  24px 0!important;
+  }
   </style>
-
+  <!--<![endif]-->
 </head>
+<body style="Margin:0;padding:0;min-width:100%;background-color:#286bd6;">
+  <table class="card_holder" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0;max-width: 500px;margin:0 auto;">
+    <tr>
+      <td height="50">&nbsp;<!-- This just adds a little padding above the card so that you can see how it opens out --></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <!-- START INTERACTIVE SECTION -->
+        <!--[if !mso]><!-->
+        <div class="card_container" style="position: relative;">
+          <div class="flip-container kinetic" style="mso-hide:all;display:none;max-height:0;overflow:hidden;text-align:center;width:100%;">
+            <div class="flipper">
+              <div class="front">
+                <img width="100%" src="img/card.jpg" style="max-width:500px;" />
+              </div>
+              <div class="back">
+                <img width="100%" src="https://www.emailonacid.com/images/blog_images/Emailology/2016/HolidayCard_InsideLeft.jpg" style="max-width:500px;" />
+              </div>
 
-<body>
-
-  <header class="bg-black">
-    <div class="container mx-auto text-white">
-      <div class="p-5">
-        <h3 class="mark-bold text-4xl"><i class="far fa-envelope-open"></i> Cbus eCard: Share a message</h3>
-      </div>
-    </div>
-  </header>
-
-
-<section data-aos="fade-up" data-aos-duration="1000">
-  <div class="py-24">
-    <div class="container mx-auto text-gray-700">
-
-      <div class="flex flex-wrap -mx-2">
-          <div class="w-full px-5">
-            <div class="cognito">
-              <script src="https://www.cognitoforms.com/s/bYLvPE4iR0WAeyPIFxi5eQ"></script>
-              <script>Cognito.load("forms", { id: "3" });</script>
+            </div>
+            <div class="inside" style="height:567px; background-color: white;">
+              <div class="cognito">
+                <script src="https://www.cognitoforms.com/s/bYLvPE4iR0WAeyPIFxi5eQ"></script>
+                <script>Cognito.load("forms", { id: "3" });</script>
+                </div>
               </div>
           </div>
-      </div>
 
-    </div>
-  </div>
-</section>
+        </div>
 
+        <!--<![endif]-->
+        <!-- END INTERACTIVE SECTION -->
 
+        <!-- START FALLBACK SECTION -->
+        <center>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" class="fallback" style="margin: 0 auto; padding: 0;">
+            <tr>
+              <td class="padding" style="margin: 0; padding: 0px;">
+                  <img src="https://www.emailonacid.com/images/blog_images/Emailology/2016/HolidayCard_Full.jpg" width="500" style="width:100%;max-width:500px;" />
+              </td>
+            </tr>
+          </table>
+        </center>
+        <!-- END FALLBACK SECTION -->
 
-
-  <!-- Custom scripts for this template -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init(),$(".button-m").click(function(){$(".menu").slideToggle("hidden")});
-</script>
-
+      </td>
+    </tr>
+  </table>
+<!-- ======= end hero article ======= -->
 </body>
-
 </html>
