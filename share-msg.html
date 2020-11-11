@@ -8,7 +8,9 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!--<![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>Card Sign</title>
+
+  <link rel='stylesheet' href='https://kit-pro.fontawesome.com/releases/v5.13.1/css/pro.min.css'>
 
   <style type="text/css">
   @media (max-width: 3780px) {
@@ -29,7 +31,7 @@
       width: 0px;
     }
     /* flip the pane when hovered */
-    .flip-container:hover .flipper {
+    .flip-container.active .flipper {
       transform: rotateY(-180deg);
       -webkit-transform: rotateY(-180deg);
       -ms-transform: rotateY(-180deg);
@@ -96,7 +98,7 @@
     }
   }
 
-  .cognito form { margin-bottom: 200px !important;}
+  .cognito form { margin-bottom: 300px !important;}
   .c-forms-form {text-align: left; padding: 23px !important;}
   .cognito textarea, .c-forms-form input[type=text] { margin: 5px 0  16px 0!important;}
   .cognito address { 
@@ -104,13 +106,98 @@
     font-weight: bold;
     color: #d76600;
     font-size: 11px !important; 
-    }
+  }
     .cognito .c-editor textarea { height: 88px !important;  }
     .cognito #c-submit-button {     width: 445px; }
+    .cognito input, .cognito textarea, .cognito select { padding: 5px !important; }
+
+
+    [data-field="Artwork"] img {
+      width: 247px;
+      border: solid 1px #e6e6e6;
+      box-shadow: -1px -1px 3px 2px #f1f1f1;
+    }
+    .c-forms-progress.c-progress-steps { display: none;}
+
+    .cognito a {
+        position: fixed;
+        top: -90px;
+    }
+
+    .button {
+      font-size: 52px;
+      color: white;
+      cursor: pointer;
+      position: relative;
+      top: 300px;
+      left: 360px;
+      z-index: 90;
+    }
+    .button p {
+      font-size: 10px;
+      margin-top: 5px;
+      font-family: arial;
+      text-transform: uppercase;
+    }
+    .hide {
+      display: none;
+    }
+
+
+    .picHolder {
+      width:500px;
+      height:567px;
+      overflow: hidden;
+      position: relative;
+    }
+    .picHolder img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 500px;
+        z-index: 8;
+    }
+    .picHolder img.active {
+        z-index: 10;
+    }
+    .picHolder img.last-active {
+        z-index: 9;
+    }
+
   </style>
   <!--<![endif]-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+
+        $(".button").click(function(){
+          $(".flip-container").toggleClass("active");
+          $(".open").toggleClass("hide");
+          $(".close").toggleClass("hide");
+        });
+
+        //images 
+        var picsLength = $(".picHolder").children('img');
+          if (picsLength.length > 1) {
+              setInterval( function() {
+                  var active = $(".picHolder img.active");
+                  var next = active.next().length ? active.next() : $(".picHolder img:first");
+                  active.addClass('last-active');
+                  next.css( { opacity: 0.0} ).addClass('active').animate( { opacity : 1.0}, 1000, function() {
+                  active.removeClass('active last-active');
+              } );
+          }, 3000);
+          }
+      });
+
+      
+    </script>
 </head>
+
+
 <body style="Margin:0;padding:0;min-width:100%;background-color:#286bd6;">
+
   <table class="card_holder" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-spacing:0;max-width: 500px;margin:0 auto;">
     <tr>
       <td height="50">&nbsp;<!-- This just adds a little padding above the card so that you can see how it opens out --></td>
@@ -119,11 +206,24 @@
       <td align="center">
         <!-- START INTERACTIVE SECTION -->
         <!--[if !mso]><!-->
+
         <div class="card_container" style="position: relative;">
+
+          
+
+          <a class="button">
+            <span class="open"><i class="fas fa-chevron-right"></i> <p>Open</p></span>
+            <span class="close hide"><i class="fas fa-chevron-left"></i> <p>Close</p></span>
+          </a>
+
           <div class="flip-container kinetic" style="mso-hide:all;display:none;max-height:0;overflow:hidden;text-align:center;width:100%;">
             <div class="flipper">
-              <div class="front">
-                <img width="100%" src="img/card.jpg" style="max-width:500px;" />
+              <div class="front picHolder">
+                <img src="img/1.jpg" width="100%" style="max-width:500px;" />
+                <img src="img/2.jpg" width="100%" style="max-width:500px;" />
+                <img src="img/3.jpg" width="100%" style="max-width:500px;" />
+                <img src="img/4.jpg" width="100%" style="max-width:500px;" />
+                <img src="img/5.jpg" width="100%" style="max-width:500px;" />
               </div>
               <div class="back">
                 <img width="100%" src="https://www.emailonacid.com/images/blog_images/Emailology/2016/HolidayCard_InsideLeft.jpg" style="max-width:500px;" />
@@ -134,10 +234,10 @@
               <div class="cognito">
                 <script src="https://www.cognitoforms.com/s/bYLvPE4iR0WAeyPIFxi5eQ"></script>
                 <script>Cognito.load("forms", { id: "3" });</script>
-                </div>
               </div>
+            </div>
           </div>
-
+      
         </div>
 
         <!--<![endif]-->
@@ -159,5 +259,10 @@
     </tr>
   </table>
 <!-- ======= end hero article ======= -->
+
+
+
+</script>
+
 </body>
 </html>
